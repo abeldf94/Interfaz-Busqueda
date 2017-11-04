@@ -30,18 +30,6 @@ public class AlgoritmoEstrella {
         //Añadimos el nodo inicial a la lista abierta
         addNodoListaA(inicio);
         
-        /*System.out.println("Listas con nodo inicial");
-        System.out.print("ListaA: ");
-        for (Nodo n: ListaA) {
-        	System.out.print( "(" + n.getX() + ", " + n.getY() + ") / " + n.getcoste() + ", ");
-        }
-        System.out.println();
-        System.out.print("ListaC: ");
-        for (Nodo n: ListaC) {
-        	System.out.print( "(" + n.getX() + ", " + n.getY() +") / " + n.getcoste() + ", ");
-        }
-        System.out.println();*/
-        
         //Mientras la lista abierta no se vacie, ir buscando los nodos adyacentes hasta llegar al nodo final
         while(listaA.size()>0){
             Nodo nodoActual = listaA.get(listaA.size()-1);
@@ -61,28 +49,7 @@ public class AlgoritmoEstrella {
             //Si no es el nodo final, buscar nodos adyacentes y añadirlos a la lista abierta
             Vector<Nodo> posiblesNodos = encontrarNodosAdyacentes(nodoActual, finals);
             
-            //Para que realice un muestreo de los nodos adyacentes sin ocupar (!=1) para ver si lo hace de manera correcta
-            /*System.out.println("Del nodo actual : " + NodoActual.getX() + ", " + NodoActual.getY());
-            
-            if(PosiblesNodos != null){
-            	for(int i=0; i < PosiblesNodos.size(); i++){
-            		System.out.println(PosiblesNodos.get(i).getX() + ", " + PosiblesNodos.get(i).getY());
-            	}
-            }
-            
-            System.out.print("ListaA: ");
-            for (Nodo n: ListaA) {
-            	System.out.print( "(" + n.getX() + ", " + n.getY() + ") / " + n.getcoste() + ", ");
-            }
-            System.out.println();
-            System.out.print("ListaC: ");
-            for (Nodo n: ListaC) {
-            	System.out.print( "(" + n.getX() + ", " + n.getY() +") / " + n.getcoste() + ", ");
-            }
-            System.out.println();*/
-            
             for (Nodo comprobar : posiblesNodos) {
-            	//System.out.println("Comprobando el nodo: " + comprobar.getX() + ", " + comprobar.getY());
                 if(!containListaC(comprobar)){
                     if(containListaA(comprobar)){
                         if(comprobar.costoG >= nodoActual.costoG){
@@ -93,17 +60,6 @@ public class AlgoritmoEstrella {
                 }
             }
             listaC.add(nodoActual);
-            /*System.out.print("ListaA: ");
-            for (Nodo n: ListaA) {
-            	System.out.print( "(" + n.getX() + ", " + n.getY() + ") / " + n.getcoste() + ", ");
-            }
-            System.out.println();
-            System.out.print("ListaC: ");
-            for (Nodo n: ListaC) {
-            	System.out.print( "(" + n.getX() + ", " + n.getY() +") / " + n.getcoste() + ", ");
-            }
-            System.out.println();
-            System.out.println( " ");*/
         }
         return null;       
     }

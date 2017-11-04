@@ -27,8 +27,10 @@ public class MyThread extends Thread {
 				for (int i = camino.size() - 1; i >= 0; i--) {
 					Point it = camino.get(i);
 					if (it != null) {
-						myMatrix.setValAt((int) it.getX(), (int) it.getY(), 4);
-						leftPanel.repaint();
+						if ((it != camino.lastElement()) && (it != camino.firstElement())) {
+							myMatrix.setValAt((int) it.getX(), (int) it.getY(), 4);
+							leftPanel.repaint();
+						}
 					}
 					try {
 						Thread.sleep(500);
